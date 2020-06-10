@@ -68,12 +68,7 @@ class PointsController {
     async index(req: Request, resp: Response) {
         const {city, uf, items} = req.query;
 
-        console.log(city, uf, items);
-        
-        
         const parsedItems = String(items).split(',').map(item => Number(item.trim()));
-
-        console.log(parsedItems);
 
         const points = await knex('point')
                             .join('point_item', 'point.id', '=', 'point_item.point_id')
